@@ -6,7 +6,6 @@ import shutil
 
 class preimgpdf:
     save_dir = 'runs/detect'
-    res_dir = 'ocr_results'
     poppler_path = 'poppler-22.04.0/Library/bin'
     temp_path = 'runs/temp'
 
@@ -19,9 +18,6 @@ class preimgpdf:
         if (os.path.exists(self.save_dir)):
             shutil.rmtree(self.save_dir)
         os.makedirs(self.save_dir)
-        if (os.path.exists(self.res_dir)):
-            shutil.rmtree(self.res_dir)
-        os.makedirs(self.res_dir)
         if (os.path.exists(self.temp_path)):
             shutil.rmtree(self.temp_path)
         os.makedirs(self.temp_path)

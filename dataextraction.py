@@ -8,9 +8,6 @@ import pandas as pd
 
 class text_extract:
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-    text_write_path = os.path.join('ocr_results', 'results.txt')
-    csv_write_path = os.path.join('ocr_results', 'fields.csv')
-    table_write_path = os.path.join('ocr_results', 'table.csv')
     fields = []
 
     def retrieve_text(self, field_name, image_path):
@@ -21,16 +18,11 @@ class text_extract:
                 img,  lang='eng_layer', config=tessdata_dir_config)
             print(field_name + ':' + img_text)
 
-            self.fields.append([field_name,img_text])
-
-            with open(self.text_write_path, 'a') as f:
-                f.writelines(field_name + ':' + img_text)
-                f.close()
+            self.fields.append([field_name, img_text])
         except Exception as e:
             # print(e)
             print(field_name + ' not found')
-    
-    def save_fields(self):
-        df = pd.Dataframe(self.fields,columns=["Field", "Value"])
-        df.to_csv(self.csv_write_path)
-        
+
+    def save_fields(self, file_path):
+        df = pd.DataFrame(self.fields, columns=["Field", "Value"])
+        df.to_csv(file_path+"\\fields.csv")

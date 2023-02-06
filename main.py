@@ -29,6 +29,8 @@ def main():
     if invoice.endswith(img_supp_types):
         detector.predict(invoice_path)
         crop_img_paths, table_dir = preprocess.set_dir(invoice, 1)
+        file_path = crop_img_paths[0]['path'].split("\\")[:3]
+        file_path = '\\'.join(file_path)
         for img in crop_img_paths:
             ocr.retrieve_text(img['field'], img['path'])
         print('TABLE DETAILS:')
@@ -38,6 +40,8 @@ def main():
                 'python table-extraction\\table-extractor.py ' + table_path)
         except:
             print("no table detected")
+
+        ocr.save_fields(file_path)
 
     elif invoice.endswith('.pdf'):
         images = preprocess.pdf_images(invoice)
@@ -52,6 +56,7 @@ def main():
                     'python table-extraction\\table-extractor.py ' + table_path)
             except:
                 print("no table detected")
+            ocr.save_fields()
 
 
 if __name__ == "__main__":
