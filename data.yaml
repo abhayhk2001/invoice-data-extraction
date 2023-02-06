@@ -1,0 +1,8 @@
+path:  .. # dataset root dir
+train: annotated  # train images (relative to 'path') 128 images
+val:  annotated # val images (relative to 'path') 128 images
+test:  # test images (optional)
+
+# Classes
+nc: 7  # number of classes
+names: [ 'COMPANY','TABLE','INVOICE DATE','TOTAL','ACCOUNT DETAILS','ABN','GST']
