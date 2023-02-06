@@ -21,7 +21,7 @@ class text_extract:
                 img,  lang='eng_layer', config=tessdata_dir_config)
             print(field_name + ':' + img_text)
 
-            fields.append([field_name,img_text])
+            self.fields.append([field_name,img_text])
 
             with open(self.text_write_path, 'a') as f:
                 f.writelines(field_name + ':' + img_text)
@@ -31,6 +31,6 @@ class text_extract:
             print(field_name + ' not found')
     
     def save_fields(self):
-        df = pd.Dataframe(fields,columns=["Field", "Value"])
-        df.to_csv(csv_write_path)
+        df = pd.Dataframe(self.fields,columns=["Field", "Value"])
+        df.to_csv(self.csv_write_path)
         

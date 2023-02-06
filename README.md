@@ -28,9 +28,8 @@ Install the latest version of [tessaract OCR](https://github.com/UB-Mannheim/tes
 Create a conda environment from the yml file and activate it as follows
 
 ```
-cd table-extraction
 conda env create -f env.yml
-conda activate table-extraction
+conda activate data-extraction
 ```
 
 3. Add the invoice to examples subfolder.
@@ -46,22 +45,4 @@ conda activate table-extraction
 ```
 6. Results are stored in results.txt and table.csv within runs/detect/exp* directories.
 
-## Retraining
-The images provided to us are present in example and they have already been trained upon.
-Any new images to be trained can be added to the annotated folder and then annotated by using Labelimg.
-
-### Add Images to the annotated/ folder in the project
-### Annotate Images using Labelimg
-
-1. Instructions for annotating is given in the link below:
-2. It also has a video showing an example
-
-[Instructions](https://drive.google.com/drive/u/0/folders/1CoCIzraThqebXwIsk-WVtj2z7V_BgpV_)
-
-If the new invoice is a pdf convert to images and add to annotated/
-If the new invoice has multiple pages add each page as a different image to annotated/ and annotate.
-
-After these steps run the following command to retrain.
-```
- python yolo_trainer.py
 ```

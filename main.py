@@ -49,7 +49,7 @@ def main():
             table_path = table_dir
             try:
                 os.system(
-                    'python table-extractions\\table-extractor.py ' + table_path)
+                    'python table-extraction\\table-extractor.py ' + table_path)
             except:
                 print("no table detected")
 

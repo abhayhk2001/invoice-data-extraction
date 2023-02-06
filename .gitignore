@@ -5,6 +5,8 @@
 **/.vscode/
 *.png
 *.PNG
+**/ocr_results/
+runs/
 
 
 # Byte-compiled / optimized / DLL files
@@ -193,7 +195,6 @@ cython_debug/
 *.a
 *.com
 *.class
-*.dll
 *.exe
 *.o
 *.py[ocd]

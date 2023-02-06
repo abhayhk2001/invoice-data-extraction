@@ -53,7 +53,7 @@ class preimgpdf:
 
     def pdf_images(self, pdfpath):
         pages = convert_from_path(
-            pdfpath, 700, poppler_path=poppler_path)
+            pdfpath, 700, poppler_path=self.poppler_path)
         for i in range(0, len(pages)):
             pages[i].save(os.path.join(self.temp_path, str(i)+".jpg"), 'JPEG')
         paths = []
