@@ -44,5 +44,3 @@ conda activate data-extraction
  python main.py --file examples\airtel_june_2012.pdf
 ```
 6. Results are stored in results.txt and table.csv within runs/detect/exp* directories.
-
-```

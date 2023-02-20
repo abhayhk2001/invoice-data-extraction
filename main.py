@@ -33,12 +33,12 @@ def main():
         file_path = '\\'.join(file_path)
         for img in crop_img_paths:
             ocr.retrieve_text(img['field'], img['path'])
-        print('TABLE DETAILS:')
         table_path = table_dir
-        try:
+        if (os.path.exists(table_path)):
+            print('TABLE DETAILS:')
             os.system(
                 'python table-extraction\\table-extractor.py ' + table_path)
-        except:
+        else:
             print("no table detected")
 
         ocr.save_fields(file_path)
@@ -48,15 +48,19 @@ def main():
         for i, imag in enumerate(images):
             detector.predict(imag)
             crop_img_paths, table_dir = preprocess.set_dir(imag, i+1)
+            file_path = crop_img_paths[0]['path'].split("\\")[:3]
+            file_path = '\\'.join(file_path)
             for img in crop_img_paths:
                 ocr.retrieve_text(img['field'], img['path'])
+
             table_path = table_dir
-            try:
+            if (os.path.exists(table_path)):
+                print('TABLE DETAILS:')
                 os.system(
                     'python table-extraction\\table-extractor.py ' + table_path)
-            except:
+            else:
                 print("no table detected")
-            ocr.save_fields()
+            ocr.save_fields(file_path)
 
 
 if __name__ == "__main__":
